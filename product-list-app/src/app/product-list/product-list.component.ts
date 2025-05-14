@@ -13,11 +13,11 @@ import { ProductDetailComponent } from '../product-detail/product-detail.compone
 })
 export class ProductListComponent {
   products: Product[] = [
-    { name: 'Laptop', price: 1200, description: 'Potente laptop da lavoro' },
-    { name: 'Smartphone', price: 800, description: 'Smartphone con ottima fotocamera' },
-    { name: 'Tablet', price: 400, description: 'Tablet ideale per multimedia' },
-    { name: 'Monitor', price: 200, description: 'Monitor HD da 24 pollici' },
-    { name: 'Tastiera', price: 50, description: 'Tastiera meccanica retroilluminata' }
+    { name: 'iPhone', price: 1200, description: '"iPhone: potenza, design e innovazione a portata di mano."' },
+    { name: 'iPad', price: 800, description: '"iPad: creatività e produttività, ovunque ti trovi."' },
+    { name: 'Apple Watch', price: 400, description: '"Apple Watch: il tuo allenatore, assistente e compagno di stile."' },
+    { name: 'iPod', price: 200, description: '"iPod: la musica sempre con te, in un formato compatto."' },
+    { name: 'Portafoglio MagSafe', price: 50, description: '"Portafoglio MagSafe: praticità e sicurezza, sempre a portata di mano."' }
   ];
 
   selectedProduct: Product | null = null;
@@ -48,10 +48,3 @@ export class ProductListComponent {
 }
 
 
-/*
-  Questo componente Angular standalone ('ProductListComponent') gestisce un elenco di prodotti
-  con la possibilità di visualizzarne i dettagli, aggiungerne di nuovi e rimuoverli.
-  Utilizza un array `products` come archivio locale, un oggetto `newProduct` per il form di inserimento,
-  e `selectedProduct` per mostrare i dettagli tramite il componente `ProductDetailComponent`.
-  Include anche il supporto a moduli comuni (CommonModule) e form (FormsModule).
-*/

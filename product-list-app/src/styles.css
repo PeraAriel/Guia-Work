@@ -5,14 +5,14 @@
 }
 
 body {
-    background-color: #f4f6f9; 
+    background-color: #f0f4f8;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #444; 
+    color: #333;
     line-height: 1.6;
     display: flex;
+    flex-direction: row;
     justify-content: flex-start;
     align-items: flex-start;
-    flex-direction: column;
     padding: 2rem;
     height: 100vh;
 }
@@ -21,16 +21,38 @@ body {
     max-width: 1200px;
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
-    gap: 1rem; 
-    margin: 0 auto; 
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Grid responsive per i prodotti */
+    gap: 2rem;
+    margin-left: 2rem;
 }
 
-
-.card:empty {
-    display: none; 
+.sidebar {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    height: fit-content;
 }
 
+.sidebar-header {
+    background-color: #1e7e34;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: bold;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.sidebar-body {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
 
 .card {
     background-color: #ffffff;
@@ -38,17 +60,17 @@ body {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: all 0.3s ease;
-    border: none; 
+    border: none;
+    margin-bottom: 1.5rem;
 }
 
-
 .card:hover {
-    transform: translateY(-5px); 
+    transform: translateY(-5px);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
 .card-header {
-    background-color: #dc3545;
+    background-color: #1e7e34;
     color: white;
     padding: 1rem;
     text-align: center;
@@ -63,9 +85,9 @@ body {
 }
 
 .selected {
-    background-color: #f8d7da; 
-    border-left: 5px solid #dc3545;
-    box-shadow: 0 0 10px rgba(220, 53, 69, 0.2); 
+    background-color: #d4edda;
+    border-left: 5px solid #1e7e34;
+    box-shadow: 0 0 10px rgba(30, 126, 52, 0.2);
 }
 
 .product-form {
@@ -73,8 +95,8 @@ body {
     padding: 2rem;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-    margin: 1rem 0; 
-    border: 1px solid #e0e0e0; 
+    margin: 1rem 0;
+    border: 1px solid #e0e0e0;
 }
 
 .product-form:hover {
@@ -82,7 +104,7 @@ body {
 }
 
 button {
-    background-color: #dc3545; 
+    background-color: #1e7e34;
     color: white;
     padding: 0.8rem 2rem;
     border: none;
@@ -95,11 +117,11 @@ button {
 }
 
 button:hover {
-    background-color: #c82333; 
+    background-color: #155d27;
 }
 
 button:active {
-    transform: scale(0.98); 
+    transform: scale(0.98);
 }
 
 input,
@@ -109,27 +131,29 @@ select {
     border: 1px solid #ccc;
     border-radius: 10px;
     font-size: 1rem;
-    margin-bottom: 1rem; 
+    margin-bottom: 1rem;
     transition: border-color 0.3s ease;
 }
 
 input:focus,
 select:focus {
-    border-color: #dc3545; 
+    border-color: #1e7e34;
     outline: none;
 }
 
 header {
-    background: linear-gradient(135deg, #c82333, #dc3545); 
+    background: linear-gradient(135deg, #28a745, #1e7e34);
     color: white;
     padding: 2rem;
     text-align: center;
     border-radius: 12px;
     margin-bottom: 2rem;
+    width: 100%;
+    position: relative;
 }
 
 footer {
-    background-color: #343a40; 
+    background-color: #343a40;
     color: white;
     padding: 1rem;
     text-align: center;
@@ -139,15 +163,16 @@ footer {
 
 @media (max-width: 768px) {
     body {
+        flex-direction: column;
         padding: 1rem;
     }
 
     .container {
-        grid-template-columns: 1fr; 
+        grid-template-columns: 1fr; /* Grid a colonna unica per mobile */
     }
 
-    .card {
-        margin-bottom: 1rem;
+    .sidebar {
+        display: none; /* Nascondi la sidebar sui dispositivi mobili */
     }
 
     button {
@@ -156,17 +181,9 @@ footer {
     }
 }
 
-
 /* 
-  Questo file CSS definisce uno stile moderno e responsive per un'app Angular che gestisce una lista di prodotti.
-
-  - Imposta uno stile base per corpo pagina (reset CSS, font, layout a colonna, padding).
-  - La classe `.container` utilizza un layout a griglia flessibile per adattare le schede (`.card`) a varie risoluzioni.
-  - Le `.card` mostrano ogni prodotto, con effetti hover eleganti e uno stile visivo pulito.
-  - `.card:empty` è nascosta per evitare la visualizzazione di elementi vuoti.
-  - `.selected` evidenzia il prodotto selezionato.
-  - `.product-form` gestisce lo stile del modulo per l'aggiunta di nuovi prodotti.
-  - I `button`, `input` e `select` sono stilizzati per offrire un'esperienza utente gradevole e coerente.
-  - `header` e `footer` completano il layout con stili distintivi.
-  - Le regole `@media` assicurano che l'interfaccia si adatti bene anche a dispositivi mobili (mobile responsive).
+  Modifiche principali:
+  - La sezione `.container` è ora una griglia con colonne dinamiche che si adattano alla larghezza dello schermo (utilizzando `repeat(auto-fill, minmax(300px, 1fr))`).
+  - I prodotti (i `.card`) si adattano automaticamente alla larghezza della griglia, diventando responsive.
+  - La sidebar rimane fissa e visibile su schermi più larghi, ma è nascosta sui dispositivi mobili.
 */

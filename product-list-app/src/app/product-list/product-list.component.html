@@ -1,44 +1,46 @@
 <div class="container">
-    <h2 class="mb-4">Lista Prodotti</h2>
-  
-    <div class="row">
+  <h1 class="mb-4">Apple Products</h1>
+
+  <div class="row row-cols-1 row-cols-md-3 g-4">
       <div
-        class="col-md-4 mb-3"
+        class="col mb-4"
         *ngFor="let product of products; let i = index"
         (click)="selectProduct(product)"
       >
-        <div class="card p-3" [ngClass]="{ 'selected': product === selectedProduct }">
-          <h5>{{ product.name }}</h5>
-          <p>{{ product.price | currency:'EUR' }}</p>
-          <button class="btn btn-sm btn-danger" (click)="deleteProduct(i); $event.stopPropagation()">
-            Elimina
-          </button>
+        <div class="card h-100 p-3" [ngClass]="{ 'selected': product === selectedProduct }">
+          <div class="card-body">
+            <h2 class="card-title">{{ product.name }}</h2>
+            <p class="card-text">{{ product.description }}</p>
+            <h3>{{ product.price | currency:'EUR' }}</h3>
+            <button class="btn btn-sm btn-danger" (click)="deleteProduct(i); $event.stopPropagation()">
+              Delete
+            </button>
+          </div>
         </div>
       </div>
-    </div>
-  
-    <hr class="my-5" />
-  
-    <div class="product-form">
-      <h4>Aggiungi Nuovo Prodotto</h4>
-      <form (ngSubmit)="addProduct()" class="row g-3">
-        <div class="col-md-4">
-          <input type="text" class="form-control" placeholder="Nome" [(ngModel)]="newProduct.name" name="name" required />
-        </div>
-        <div class="col-md-4">
-          <input type="number" class="form-control" placeholder="Prezzo" [(ngModel)]="newProduct.price" name="price" required />
-        </div>
-        <div class="col-md-4">
-          <input type="text" class="form-control" placeholder="Descrizione" [(ngModel)]="newProduct.description" name="description" required />
-        </div>
-        <div class="col-12">
-          <button type="submit" class="btn btn-primary">Aggiungi</button>
-        </div>
-      </form>
-    </div>
-  
-    <hr class="my-5" />
-  
-    <app-product-detail [product]="selectedProduct"></app-product-detail>
   </div>
-  
+
+  <hr class="my-5" />
+
+  <div class="product-form">
+    <h3>Add new product</h3>
+    <form (ngSubmit)="addProduct()" class="row g-3">
+      <div class="col-md-4">
+        <input type="text" class="form-control" placeholder="Name" [(ngModel)]="newProduct.name" name="name" required />
+      </div>
+      <div class="col-md-4">
+        <input type="number" class="form-control" placeholder="Price" [(ngModel)]="newProduct.price" name="price" required />
+      </div>
+      <div class="col-md-4">
+        <input type="text" class="form-control" placeholder="Description" [(ngModel)]="newProduct.description" name="description" required />
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Add</button>
+      </div>
+    </form>
+  </div>
+
+  <hr class="my-5" />
+
+  <app-product-detail [product]="selectedProduct"></app-product-detail>
+</div>
