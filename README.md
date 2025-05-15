@@ -38,7 +38,7 @@ The design focuses on **clarity and usability**, aiming to replicate the eleganc
 
 - **Ariel Guiatti**
 - **Andrea Molfese**
-- **Evapini Federico**
+- **Federico Papini**
 
 All members collaborated together in the creation of this project, from layout to component design.
 
